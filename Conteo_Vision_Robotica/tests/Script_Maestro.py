@@ -69,7 +69,7 @@ def detectar_esquinas(imagen_gris):
 # =============================================================================
 if __name__ == "__main__":
     # 1. Cargar la imagen (Asegúrate de que se llame así y esté en la misma carpeta)
-    ruta_imagen = 'Tornillos.jpeg'
+    ruta_imagen = 'Semillas.png'
     img_color = cv2.imread(ruta_imagen)
     
     if img_color is None:
@@ -99,7 +99,7 @@ if __name__ == "__main__":
         bordes = detectar_bordes(img_limpia)
         esquinas = detectar_esquinas(img_limpia)
         # Marcamos las esquinas fuertes en rojo (al 5% para que no se llene todo el tornillo)
-        img_esquinas_vis[esquinas > 0.005 * esquinas.max()] = [0, 0, 255]
+        img_esquinas_vis[esquinas > 0.05 * esquinas.max()] = [0, 0, 255]
         
         # 5. Mostrar TODO el proceso al profesor en una sola ventana
         print(f"--- ANÁLISIS COMPLETADO ---")
