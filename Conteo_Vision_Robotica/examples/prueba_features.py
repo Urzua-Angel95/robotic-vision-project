@@ -30,7 +30,7 @@ esquinas = detectar_esquinas(img_filtrada)
 # Preparamos una imagen a color para pintar los puntos de las esquinas en rojo
 img_esquinas_vis = imagen_bgr.copy()
 # Marcamos en rojo [0, 0, 255] los píxeles donde Harris detectó una esquina fuerte
-img_esquinas_vis[esquinas > 0.003 * esquinas.max()] = [0, 0, 255]
+img_esquinas_vis[esquinas > 0.005 * esquinas.max()] = [0, 0, 255]
 
 # 4. Mostrar resultados
 plt.figure(figsize=(15, 5))
