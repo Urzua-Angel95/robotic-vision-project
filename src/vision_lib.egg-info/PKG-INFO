@@ -1,0 +1,14 @@
+Metadata-Version: 2.4
+Name: vision_lib
+Version: 0.1.0
+Summary: Libreria para segmentacion, conteo y analisis de objetos industriales.
+Author: Equipo10_Rodriguez_Carreon_Urzua_Hernandez
+Requires-Python: >=3.7
+Requires-Dist: numpy
+Requires-Dist: scipy
+Requires-Dist: opencv-python
+Requires-Dist: matplotlib
+Dynamic: author
+Dynamic: requires-dist
+Dynamic: requires-python
+Dynamic: summary

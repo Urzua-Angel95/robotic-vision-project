@@ -14,7 +14,7 @@ sys.path.append(ruta_src)
 from vision_lib.preprocessing import convertir_a_gris, aplicar_filtro_espacial, transformar_intensidad
 
 # Paso 1: Cargar la imagen de prueba
-ruta_imagen = '../tests/Semillas.png'
+ruta_imagen = '../tests/Tornillos.jpeg'
 imagen_bgr = cv2.imread(ruta_imagen)
 
 if imagen_bgr is None:

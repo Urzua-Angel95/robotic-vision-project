@@ -91,7 +91,7 @@ def detectar_esquinas(imagen_gris):
 if __name__ == "__main__":
     
     # 1. Cargar la imagen 
-    ruta_imagen = 'Semillas.png'
+    ruta_imagen = 'Tornillos.jpeg'
     img_color = cv2.imread(ruta_imagen)
     
     if img_color is None:

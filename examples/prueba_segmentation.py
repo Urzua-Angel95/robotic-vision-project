@@ -14,7 +14,7 @@ from vision_lib.preprocessing import convertir_a_gris, transformar_intensidad, a
 from vision_lib.segmentation import umbralizar_imagen, segmentar_y_contar
 
 # Paso 1: Cargar la imagen
-imagen_bgr = cv2.imread('../tests/Semillas.png')
+imagen_bgr = cv2.imread('../tests/Tornillos.jpeg')
 imagen_mostrar = imagen_bgr.copy()
 
 # Paso 2: Preprocesamiento basico
