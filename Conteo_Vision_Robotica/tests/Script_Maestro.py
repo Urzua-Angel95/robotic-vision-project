@@ -91,7 +91,7 @@ def detectar_esquinas(imagen_gris):
 if __name__ == "__main__":
     
     # 1. Cargar la imagen 
-    ruta_imagen = 'Tornillos.jpeg'
+    ruta_imagen = 'Semillas.png'
     img_color = cv2.imread(ruta_imagen)
     
     if img_color is None:
@@ -106,7 +106,7 @@ if __name__ == "__main__":
         img_contraste = transformar_intensidad(img_gris)
         img_limpia = aplicar_filtro_espacial(img_contraste)
         
-        # 3. Aplicar Segmentación y Conteo 
+        # 3. Aplicar Segmentacion y Conteo 
         img_binaria = umbralizar_imagen(img_limpia)
         total_tornillos, datos_tornillos = segmentar_y_contar(img_binaria, area_minima=300)
         

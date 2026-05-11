@@ -1,5 +1,6 @@
 """
 Script para probar la deteccion de bordes y esquinas.
+
 """
 import sys
 import os
@@ -15,7 +16,7 @@ from vision_lib.preprocessing import convertir_a_gris, transformar_intensidad, a
 from vision_lib.features import detectar_bordes, detectar_esquinas
 
 # Paso 1: Cargar y limpiar la imagen original
-imagen_bgr = cv2.imread('../tests/Tornillos.jpeg')
+imagen_bgr = cv2.imread('../tests/Semillas.png')
 img_gris = convertir_a_gris(imagen_bgr)
 img_contraste = transformar_intensidad(img_gris)
 img_filtrada = aplicar_filtro_espacial(img_contraste, tipo="gaussiano")
