@@ -1,38 +1,38 @@
-# -*- coding: utf-8 -*-
 """
-Script de prueba para la detección de bordes y esquinas.
+Script para probar la deteccion de bordes y esquinas.
 """
 import sys
 import os
 import cv2
-import numpy as np
 import matplotlib.pyplot as plt
 
+# Agregar la carpeta src al path para poder importar nuestra libreria
 ruta_src = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'src'))
 sys.path.append(ruta_src)
 
-# Importamos funciones de limpieza y características
+# Importar funciones de limpieza y extraccion de caracteristicas
 from vision_lib.preprocessing import convertir_a_gris, transformar_intensidad, aplicar_filtro_espacial
 from vision_lib.features import detectar_bordes, detectar_esquinas
 
-# 1. Cargar y limpiar la imagen
+# Paso 1: Cargar y limpiar la imagen original
 imagen_bgr = cv2.imread('../tests/Tornillos.jpeg')
 img_gris = convertir_a_gris(imagen_bgr)
 img_contraste = transformar_intensidad(img_gris)
 img_filtrada = aplicar_filtro_espacial(img_contraste, tipo="gaussiano")
 
-# 2. NUEVO: Detección de Bordes (Canny)
+# Paso 2: Detectar los contornos con Canny
 bordes = detectar_bordes(img_filtrada, umbral_min=20, umbral_max=150)
 
-# 3. NUEVO: Detección de Esquinas (Harris)
+# Paso 3: Encontrar esquinas con Harris
 esquinas = detectar_esquinas(img_filtrada)
 
-# Preparamos una imagen a color para pintar los puntos de las esquinas en rojo
+# Hacer una copia a color para dibujar los puntos detectados
 img_esquinas_vis = imagen_bgr.copy()
-# Marcamos en rojo [0, 0, 255] los píxeles donde Harris detectó una esquina fuerte
+
+# Pintar de rojo los pixeles que superen el umbral de sensibilidad (0.5%)
 img_esquinas_vis[esquinas > 0.005 * esquinas.max()] = [0, 0, 255]
 
-# 4. Mostrar resultados
+# Paso 4: Graficar todo junto para comparar
 plt.figure(figsize=(15, 5))
 
 plt.subplot(1, 3, 1)
@@ -42,14 +42,13 @@ plt.axis('off')
 
 plt.subplot(1, 3, 2)
 plt.imshow(bordes, cmap='gray')
-plt.title('2. Bordes (Canny)\n(Radiografía del contorno)')
+plt.title('2. Bordes (Canny)\n(Radiografia del contorno)')
 plt.axis('off')
 
 plt.subplot(1, 3, 3)
 plt.imshow(cv2.cvtColor(img_esquinas_vis, cv2.COLOR_BGR2RGB))
-plt.title('3. Esquinas (Harris)\n(Puntos rojos en cambios bruscos)')
+plt.title('3. Esquinas (Harris)\n(Puntos en cambios bruscos)')
 plt.axis('off')
 
 plt.tight_layout()
 plt.show()
-
